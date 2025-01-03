@@ -1,17 +1,32 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from './images/logo.png'
+import { useState } from 'react';
+import Profile from './Profile';
 
-const Navbar = ({ props }) => {
+const Navbar = () => {
 
     const navigate = useNavigate();
     const handleClick = (path) => {
         navigate(path)
     }
 
+    const img = {
+        height: '70px',
+    }
+
+
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
+    }
+
 
     return (
         <nav style={styles.navbar}>
-            <h1 style={styles.title}>My App</h1>
+            <button onClick={() => { handleClick('/') }} style={styles.button}>
+                <img src={logo} alt="" style={img} />
+            </button>
             <ul style={styles.navList}>
                 <li style={styles.navItem}>
                     <button onClick={() => { handleClick('/'); }} style={styles.button}> Home </button>
@@ -27,11 +42,11 @@ const Navbar = ({ props }) => {
                 </li>
 
                 <li style={styles.navItem}>
-                    <button onClick={() => handleClick('/login')} style={styles.button}>Login</button>
+                    <button onClick={toggleSidebar} style={styles.button}>
+                        Profile
+                    </button>
+                    {isSidebarOpen && <Profile onClose={toggleSidebar} />}
                 </li>
-
-
-
             </ul>
         </nav>
     );
@@ -42,14 +57,14 @@ const styles = {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '10px 20px',
+        padding: '0 20px',
         margin: '10px',
         backgroundColor: '#ADD8E6',
         borderRadius: '10px',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     },
-    title: {
-        margin: 0,
+    logo: {
+        height: '50px',
     },
     navList: {
         listStyle: 'none',

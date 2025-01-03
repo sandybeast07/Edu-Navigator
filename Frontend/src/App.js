@@ -13,6 +13,7 @@ import Japan from './components/countries/Japan'
 import Korea from './components/countries/Korea'
 import NewZealand from './components/countries/NewZealand'
 import Usa from './components/countries/Usa'
+import Profile from './components/Profile';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path="/login" element={<Login />} />
+
         <Route path="/membership" element={<Membership />} />
         <Route path="/foreignPlans" element={<ForeignPlans />} />
         <Route path="/mentors" element={<Mentors />} />

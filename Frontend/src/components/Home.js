@@ -19,7 +19,7 @@ const HomePage = () => {
             justifyContent: 'space-between',
             padding: '20px',
             backgroundColor: '#f0f8ff',
-            height: '100vh',
+            height: '100pc',
         },
         leftSection: {
             flex: 1,
@@ -27,7 +27,7 @@ const HomePage = () => {
             backgroundColor: '#e0f7fa',
             borderRadius: '10px',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-            height: '40%',
+            height: '20%',
         },
         rightSection: {
             flex: 1,
@@ -35,7 +35,7 @@ const HomePage = () => {
             backgroundColor: '#ffe0b2',
             borderRadius: '10px',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-            height: '40%',
+            height: '20%',
         },
         loginButton: {
             padding: '10px 20px',
