@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Profile = ({ isOpen, onClose }) => {
+const Sidebar = ({ isOpen, onClose }) => {
     const styles = {
         popupOverlay: {
             position: "fixed",
@@ -78,19 +78,18 @@ const Profile = ({ isOpen, onClose }) => {
 
             <div style={styles.sidebarStyle}>
                 <h2>Sidebar</h2>
-                <button onClick={onClose}>Close</button>
                 <ul style={styles.sideList}>
                     <li style={styles.sideItem}>
-                        <button onClick={() => { handleClick('/'); }} style={styles.button}> Home </button>
+                        <button onClick={() => { handleClick('/'); }} style={styles.button}> My profile </button>
                     </li>
                     <li style={styles.sideItem}>
-                        <button onClick={() => handleClick('/foreignPlans')} style={styles.button}>Foreign Plans</button>
+                        <button onClick={() => handleClick('/foreignPlans')} style={styles.button}>Settings</button>
                     </li>
                     <li style={styles.sideItem}>
                         <button onClick={() => handleClick('/membership')} style={styles.button}>Education Plans</button>
                     </li>
                     <li style={styles.sideItem}>
-                        <button onClick={() => handleClick('/mentors')} style={styles.button}>Our Mentors</button>
+                        <button onClick={() => handleClick('/mentors')} style={styles.button}>Log out</button>
                     </li>
                 </ul>
             </div>
@@ -98,4 +97,4 @@ const Profile = ({ isOpen, onClose }) => {
     );
 };
 
-export default Profile;
+export default Sidebar;

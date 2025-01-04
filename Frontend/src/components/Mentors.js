@@ -1,68 +1,81 @@
 import React, { useState } from 'react';
+import mentor from './images/mentor.JPG'
+import { useNavigate } from 'react-router-dom';
 
-// Sample data for mentors
 const mentorsData = {
     IT: [
         {
             name: 'Ram',
             qualification: 'PhD in Computer Science',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$10',
         },
         {
             name: 'Hari',
             qualification: 'MSc in Data Science',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
         {
             name: 'Sita',
             qualification: 'MSc in Software Engineering',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
     ],
     Marketing: [
         {
             name: 'Gita',
             qualification: 'MBA in Marketing',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
         {
             name: 'Krishna',
             qualification: 'MSc in Digital Marketing',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
         {
             name: 'Radha',
             qualification: 'BSc in Marketing',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
     ],
     Design: [
         {
             name: 'Balaram',
             qualification: 'MFA in Graphic Design',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
         {
             name: 'Suvam',
             qualification: 'BFA in Visual Arts',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
         {
             name: 'Sandybeast',
             qualification: 'MSc in UX/UI Design',
-            photo: 'https://via.placeholder.com/150',
+            photo: mentor,
+            price: '$100',
         },
     ],
 };
 
 const Mentors = () => {
     const [selectCategory, setSelectCategory] = useState('IT');
-
     const handleCategoryChange = (category) => {
         setSelectCategory(category);
     };
 
-    // Define styles as objects
+    const navigation = useNavigate();
+    const paymentNavigation = (path) => {
+        navigation(path);
+    }
+
     const styles = {
         container: {
             display: 'flex',
@@ -109,7 +122,46 @@ const Mentors = () => {
             borderRadius: '5px',
             cursor: 'pointer',
         },
+        popStyles: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        popupContentStyles: {
+            backgroundColor: 'white',
+            width: '40%',
+            height: '30%',
+            padding: '20px',
+            borderRadius: '10px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            textAlign: 'center',
+        },
     };
+
+    const [price, setPrice] = useState('0');
+    const direct = ({ mentor }) => {
+        setPrice(mentor.price);
+        setIsPopupVisible(true)
+
+    }
+
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const hidePopup = () => {
+        setIsPopupVisible(false);
+    };
+    const handleOverlayClick = (e) => {
+        if (e.target.classList.contains('popup-overlay')) {
+            hidePopup();
+        }
+    };
+
+
 
     return (
         <div style={styles.container}>
@@ -127,10 +179,25 @@ const Mentors = () => {
                             <img src={mentor.photo} alt={mentor.name} style={styles.photo} />
                             <h3>{mentor.name}</h3>
                             <p>{mentor.qualification}</p>
+                            <button onClick={() => direct({ mentor })} style={styles.sidebarButton}>Book a Call</button>
                         </div>
                     ))}
+
                 </div>
             </div>
+
+            {isPopupVisible && (
+                <div style={styles.popStyles} className='popup-overlay' onClick={handleOverlayClick}>
+
+                    <div style={styles.popupContentStyles}>
+                        <h2>1 hour Session</h2>
+                        <h2>Price</h2>
+                        <p>{price}</p>
+
+                        <button style={styles.sidebarButton} onClick={() => { paymentNavigation('/paymentmethod') }}>Book Now</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

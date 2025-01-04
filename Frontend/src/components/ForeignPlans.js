@@ -94,8 +94,6 @@ const ForeignPlans = () => {
         <div style={styles.container}>
             <h1>Foreign Plans</h1>
 
-            {/*MAIN CONTENT */}
-
 
             <div style={styles.mainContainer}>
 

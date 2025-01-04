@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from './images/logo.png'
 import { useState } from 'react';
-import Profile from './Profile';
+import Sidebar from './Sidebar';
 
 const Navbar = () => {
 
@@ -35,7 +35,7 @@ const Navbar = () => {
                     <button onClick={() => handleClick('/foreignPlans')} style={styles.button}>Foreign Plans</button>
                 </li>
                 <li style={styles.navItem}>
-                    <button onClick={() => handleClick('/membership')} style={styles.button}>Education Plans</button>
+                    <button onClick={() => handleClick('/paymentmethod')} style={styles.button}>Education Plans</button>
                 </li>
                 <li style={styles.navItem}>
                     <button onClick={() => handleClick('/mentors')} style={styles.button}>Our Mentors</button>
@@ -45,7 +45,7 @@ const Navbar = () => {
                     <button onClick={toggleSidebar} style={styles.button}>
                         Profile
                     </button>
-                    {isSidebarOpen && <Profile onClose={toggleSidebar} />}
+                    {isSidebarOpen && <Sidebar onClose={toggleSidebar} />}
                 </li>
             </ul>
         </nav>
