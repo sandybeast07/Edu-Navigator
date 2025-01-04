@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const PaymentMethod = () => {
     const [formData, setFormData] = useState({
@@ -21,12 +22,15 @@ const PaymentMethod = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        if (!e.target.checkValidity()) {
-            return;
+        try {
+            const response = await axios.post('http://localhost:8000/items/', formData);
+            console.log('Item saved:', response.data);
+        } catch (error) {
+            console.error('error saving item', error)
         }
+
     };
 
 
@@ -122,6 +126,12 @@ const PaymentMethod = () => {
             textAlign: 'center',
         },
     };
+
+    const [amount, setAmount] = useState('');
+    const [status, setStatus] = useState('');
+
+
+
 
     return (
         <div style={styles.container}>

@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV 'C:\Users\LENOVO\Desktop\finalFight\virt'
+set -gx VIRTUAL_ENV 'C:\Users\Shubham Bista\OneDrive\Desktop\Edu-Navigator\virt'
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"Scripts $PATH
