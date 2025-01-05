@@ -65,6 +65,74 @@ const mentorsData = {
     ],
 };
 
+const styles = {
+    container: {
+        display: 'flex',
+        height: '100vh',
+        backgroundColor: '#f0f8ff',
+    },
+    sidebar: {
+        width: '200px',
+        padding: '20px',
+        backgroundColor: '#e0f7fa',
+        boxShadow: '2px 0 5px rgba(0,0,0,0.1)',
+    },
+    main: {
+        flex: 1,
+        padding: '20px',
+    },
+    mentorGrid: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '20px',
+    },
+    mentorCard: {
+        width: '30%',
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#ffffff',
+        textAlign: 'center',
+        padding: '10px',
+    },
+    photo: {
+        width: '100px',
+        height: '100px',
+        borderRadius: '50%',
+        marginBottom: '10px',
+    },
+    sidebarButton: {
+        display: 'block',
+        margin: '10px 0',
+        padding: '10px',
+        width: '100%',
+        backgroundColor: '#00796b',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+    },
+    popStyles: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    popupContentStyles: {
+        backgroundColor: 'white',
+        width: '40%',
+        height: '30%',
+        padding: '20px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+        textAlign: 'center',
+    },
+};
+
 const Mentors = () => {
     const [selectCategory, setSelectCategory] = useState('IT');
     const handleCategoryChange = (category) => {
@@ -75,74 +143,7 @@ const Mentors = () => {
     const paymentNavigation = (path) => {
         navigation(path);
     }
-
-    const styles = {
-        container: {
-            display: 'flex',
-            height: '100vh',
-            backgroundColor: '#f0f8ff',
-        },
-        sidebar: {
-            width: '200px',
-            padding: '20px',
-            backgroundColor: '#e0f7fa',
-            boxShadow: '2px 0 5px rgba(0,0,0,0.1)',
-        },
-        main: {
-            flex: 1,
-            padding: '20px',
-        },
-        mentorGrid: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '20px',
-        },
-        mentorCard: {
-            width: '30%',
-            borderRadius: '10px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#ffffff',
-            textAlign: 'center',
-            padding: '10px',
-        },
-        photo: {
-            width: '100px',
-            height: '100px',
-            borderRadius: '50%',
-            marginBottom: '10px',
-        },
-        sidebarButton: {
-            display: 'block',
-            margin: '10px 0',
-            padding: '10px',
-            width: '100%',
-            backgroundColor: '#00796b',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-        },
-        popStyles: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-        },
-        popupContentStyles: {
-            backgroundColor: 'white',
-            width: '40%',
-            height: '30%',
-            padding: '20px',
-            borderRadius: '10px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-            textAlign: 'center',
-        },
-    };
+    
 
     const [price, setPrice] = useState('0');
     const direct = ({ mentor }) => {

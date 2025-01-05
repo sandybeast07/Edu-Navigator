@@ -1,5 +1,80 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
+const styles = {
+    sidebarButton: {
+        display: 'block',
+        margin: '10px 0',
+        padding: '10px',
+        width: '100%',
+        backgroundColor: '#00796b',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+    },
+    container: {
+        width: '400px',
+        margin: 'auto',
+        padding: '20px',
+        backgroundColor: '#f9f9f9',
+        borderRadius: '8px',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+    },
+    heading: {
+        textAlign: 'center',
+        color: '#333',
+    },
+    label: {
+        display: 'block',
+        margin: '10px 0 5px',
+        color: '#555',
+    },
+    input: {
+        width: '90%',
+        padding: '10px',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        marginBottom: '15px',
+    },
+    select: {
+        width: '100%',
+        padding: '10px',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        marginBottom: '15px',
+    },
+    button: {
+        width: '100%',
+        padding: '10px',
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        fontSize: '16px',
+    },
+    buttonHover: {
+        backgroundColor: '#45a049',
+    },
+    popStyles: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    popupContentStyles: {
+        backgroundColor: 'white',
+        padding: '20px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+        textAlign: 'center',
+    },
+};
 
 const PaymentMethod = () => {
     const [formData, setFormData] = useState({
@@ -13,7 +88,6 @@ const PaymentMethod = () => {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
 
 
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -24,9 +98,25 @@ const PaymentMethod = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setFormData({
+            name: '',
+            phone: '',
+            address: '',
+            email: '',
+            paymentMethod: ''
+        })
         try {
-            const response = await axios.post('http://localhost:8000/items/', formData);
-            console.log('Item saved:', response.data);
+            console.log(formData)
+            const response = await fetch('http://localhost:8000//api/items/', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+
+            
+            console.log('Item saved:', await response.json());
         } catch (error) {
             console.error('error saving item', error)
         }
@@ -51,86 +141,6 @@ const PaymentMethod = () => {
 
     }
 
-    const styles = {
-        sidebarButton: {
-            display: 'block',
-            margin: '10px 0',
-            padding: '10px',
-            width: '100%',
-            backgroundColor: '#00796b',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-        },
-        container: {
-            width: '400px',
-            margin: 'auto',
-            padding: '20px',
-            backgroundColor: '#f9f9f9',
-            borderRadius: '8px',
-            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-        },
-        heading: {
-            textAlign: 'center',
-            color: '#333',
-        },
-        label: {
-            display: 'block',
-            margin: '10px 0 5px',
-            color: '#555',
-        },
-        input: {
-            width: '90%',
-            padding: '10px',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
-            marginBottom: '15px',
-        },
-        select: {
-            width: '100%',
-            padding: '10px',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
-            marginBottom: '15px',
-        },
-        button: {
-            width: '100%',
-            padding: '10px',
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '16px',
-        },
-        buttonHover: {
-            backgroundColor: '#45a049',
-        },
-        popStyles: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-        },
-        popupContentStyles: {
-            backgroundColor: 'white',
-            padding: '20px',
-            borderRadius: '10px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-            textAlign: 'center',
-        },
-    };
-
-    const [amount, setAmount] = useState('');
-    const [status, setStatus] = useState('');
-
-
 
 
     return (
@@ -150,13 +160,7 @@ const PaymentMethod = () => {
                 </label>
                 <label style={styles.label}>
                     Address:
-                    <input
-                        type="text"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleChange}
-                        required
-                        style={styles.input}
+                    <input type="text" name="address" value={formData.address} onChange={handleChange} required style={styles.input}
                     />
                 </label>
                 <label style={styles.label}>

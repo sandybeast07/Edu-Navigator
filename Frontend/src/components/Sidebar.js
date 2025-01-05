@@ -83,7 +83,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                         <button onClick={() => { handleClick('/'); }} style={styles.button}> My profile </button>
                     </li>
                     <li style={styles.sideItem}>
-                        <button onClick={() => handleClick('/foreignPlans')} style={styles.button}>Settings</button>
+                        <button onClick={() => handleClick('/test')} style={styles.button}>Psychometric Test</button>
                     </li>
                     <li style={styles.sideItem}>
                         <button onClick={() => handleClick('/membership')} style={styles.button}>Education Plans</button>

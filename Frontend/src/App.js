@@ -14,6 +14,9 @@ import Korea from './components/countries/Korea'
 import NewZealand from './components/countries/NewZealand'
 import Usa from './components/countries/Usa'
 import PaymentMethod from './components/PaymentMethod';
+import Test from './components/Test'
+import PersonalityTest from './components/PersonalityTest'
+import EducationPlans from './components/EducationPlans'
 
 function App() {
 
@@ -24,9 +27,11 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path="/login" element={<Login />} />
         <Route path="/paymentmethod" element={<PaymentMethod />} />
-
+        <Route path="/test" element={<Test />} />
+        <Route path='/personality_questions' element={<PersonalityTest/>}/>
         <Route path="/membership" element={<Membership />} />
         <Route path="/foreignPlans" element={<ForeignPlans />} />
+        <Route path="/educationPlans" element={<EducationPlans />} />
         <Route path="/mentors" element={<Mentors />} />
         <Route path="/canada" element={<Canada />} />
         <Route path="/australia" element={<Australia />} />

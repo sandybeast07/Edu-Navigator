@@ -34,9 +34,9 @@ const Navbar = () => {
                 <li style={styles.navItem}>
                     <button onClick={() => handleClick('/foreignPlans')} style={styles.button}>Foreign Plans</button>
                 </li>
-                <li style={styles.navItem}>
-                    <button onClick={() => handleClick('/paymentmethod')} style={styles.button}>Education Plans</button>
-                </li>
+                {/* <li style={styles.navItem}>
+                    <button onClick={() => handleClick('/educationPlans')} style={styles.button}>Education Plans</button>
+                </li> */}
                 <li style={styles.navItem}>
                     <button onClick={() => handleClick('/mentors')} style={styles.button}>Our Mentors</button>
                 </li>
